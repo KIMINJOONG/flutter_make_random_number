@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_make_random_number/constant/color.dart';
+import 'package:flutter_make_random_number/screen/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -71,7 +72,16 @@ class _Header extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            // [HomeScreen(), SettingsScreen()]
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return SettingsScreen();
+                },
+              ),
+            );
+          },
           icon: Icon(
             Icons.settings,
             color: RED_COLOR,
