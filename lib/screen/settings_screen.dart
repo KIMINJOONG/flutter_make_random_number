@@ -8,11 +8,52 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  double maxNumber = 10000;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Settings screen'),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Row(
+                  children: maxNumber
+                      .toInt()
+                      .toString()
+                      .split("")
+                      .map(
+                        (e) => Image.asset(
+                          'asset/img/$e.png',
+                          width: 50.0,
+                          height: 70.0,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+              Slider(
+                value: maxNumber,
+                min: 10000,
+                max: 1000000,
+                onChanged: (double val) {
+                  setState(() {
+                    maxNumber = val;
+                  });
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('저장!'),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
